@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import requests, json
+import config
 app = Flask(__name__)
 
 
@@ -38,3 +39,9 @@ def results(ingredient1=None):
         return render_template("existing.html", ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
     else:
         return render_template("new.html", ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
+
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=config.PORT, debug=config.DEBUG_MODE)
+
