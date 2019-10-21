@@ -1,0 +1,32 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: cocktailfinder
+spec:
+  type: LoadBalancer
+  selector:
+    app: cocktailfinder
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cocktailfinder
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cocktailfinder
+    spec:
+      containers:
+      - name: cocktailfinder
+        image: austinblack/cocktailfinder
+        ports:
+        - containerPort: 80
+          protocol: TCP
