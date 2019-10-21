@@ -37,10 +37,10 @@ def results(ingredient1=None):
 
     cnx = mysql.connector.connect(host='db-ablack-demo-do-user-6644004-0.db.ondigitalocean.com', port=25060, user='doadmin', db='defaultdb', passwd='hym61r4n0jypa93w', ssl_ca='ca-certificate.crt')
     cursor = cnx.cursor()
-    cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1") % ingredient1
-    cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1") % ingredient2
-    cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1") % ingredient3
-    cursor.commit()
+    cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1" % ingredient1)
+    cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1" % ingredient2)
+    cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1" % ingredient3)
+    cnx.commit()
 
     ing1_drinks = construct_json(ingredient1)
     ing2_drinks = construct_json(ingredient2)
