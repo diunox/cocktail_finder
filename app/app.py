@@ -32,6 +32,9 @@ def results(ingredient1=None):
     ingredient2 = request.form['ingredient2']
     ingredient3 = request.form['ingredient3']
 
+    if ingredient1 is None or ingredient2 is None or ingredient3 is None:
+        return render_template("badinput.html")
+
     cnx = mysql.connector.connect(host='db-ablack-demo-do-user-6644004-0.db.ondigitalocean.com', port=25060, user='doadmin', db='defaultdb', passwd='hym61r4n0jypa93w', ssl_ca='ca-certificate.crt')
     cursor = cnx.cursor()
     cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1") % ingredient1
