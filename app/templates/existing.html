@@ -1,16 +1,20 @@
 <html>
+<head>
+<title>Austin Black Tech Demo</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> 
+</head>
    <body>
     The ingredients you've specified make this/these drink: {{combine}} </br>
     </br>
     Here are the other drinks made from your ingredients:
     </br>
-    {{ing1_drinks}}
+    {{ingredient1}}:{{ing1_drinks}}
     </br>
-    {{ing2_drinks}}
+    {{ingredient2}}:{{ing2_drinks}}
     </br>
-    {{ing3_drinks}}
+    {{ingredient3}}:{{ing3_drinks}}
     </br>
-    {{combine}}
+    Combined result:{{combine}}
     </br>
     </body>
 </html>

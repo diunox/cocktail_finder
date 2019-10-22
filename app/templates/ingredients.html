@@ -1,9 +1,14 @@
 <html>
+<head>
+<title>Austin Black Tech Demo</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
    <body>
       <form action = "/result" method = "POST">
-         <p>First ingredient <input type = "text" name = "ingredient1" /></p>
-         <p>Second ingredient <input type = "text" name = "ingredient2" /></p>
-         <p>Third ingredient <input type = "text" name = "ingredient3" /></p>
+         <p>Welcome! Please input three cocktail ingredients below, and we'll see if that drink exists in the CocktailDB database! All ingredients will be logged to an offsite MySQL server, which will then be pulled from by a Grafana server.</p>
+         <p>Ingredient 1 <input type = "text" name = "ingredient1" /></p>
+         <p>Ingredient 2 <input type = "text" name = "ingredient2" /></p>
+         <p>Ingredient 3 <input type = "text" name = "ingredient3" /></p>
          <p><input type = "submit" value = "submit" /></p>
       </form>
    </body>

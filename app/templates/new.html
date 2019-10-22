@@ -1,11 +1,12 @@
 <html>
+<head>     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> </head>
    <body>
-       You've invented a cocktail that wasn't in the cocktailDB list! Or, it probably is, but their ingredient lookups don't look up all the drinks they're in, it turns out! Here's the other drinks using your ingredients! </br>
-       {{ing1_drinks}}
+       You've invented a cocktail that wasn't in the cocktailDB list! However, that source is very incomplete with poor ingredient-drink mapping. It's good enough for a tech demo, though.  Here's the other drinks using your ingredients! </br>
+       {{ingredient1}}:{{ing1_drinks}}
         </br>
-       {{ing2_drinks}}
+       {{ingredient2}}:{{ing2_drinks}}
         </br>
-       {{ing3_drinks}}
+       {{ingredient3}}:{{ing3_drinks}}
         </br>
     </body>
 </html>

@@ -12,10 +12,10 @@ def construct_json(ingredient):
     ing_drinks = []
     req = requests.get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=%s" % ingredient)
     if not req.text:
-        return 0
+        return ""
     jdrinks = json.loads(req.text)
     if jdrinks['drinks'] is None:
-        return 0
+        return ""
     for drink in jdrinks['drinks']:
         ing_drinks.append(drink['strDrink'])
     return set(ing_drinks)
@@ -32,7 +32,7 @@ def results(ingredient1=None):
     ingredient2 = request.form['ingredient2']
     ingredient3 = request.form['ingredient3']
 
-    if ingredient1 is None or ingredient2 is None or ingredient3 is None:
+    if not ingredient1 or not ingredient2 or not ingredient3:
         return render_template("badinput.html")
 
     cnx = mysql.connector.connect(host='db-ablack-demo-do-user-6644004-0.db.ondigitalocean.com', port=25060, user='doadmin', db='defaultdb', passwd='hym61r4n0jypa93w', ssl_ca='ca-certificate.crt')
@@ -46,13 +46,13 @@ def results(ingredient1=None):
     ing2_drinks = construct_json(ingredient2)
     ing3_drinks = construct_json(ingredient3)
 
-    if ing1_drinks is not 0 and ing2_drinks is not 0 and ing3_drinks is not 0:
+    if ing1_drinks and ing2_drinks and ing3_drinks:
         combine = ing1_drinks & ing2_drinks & ing3_drinks
 
     if combine:
-        return render_template("existing.html", ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
+        return render_template("existing.html", ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
     else:
-        return render_template("new.html", ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
+        return render_template("new.html", ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
 
 
 
