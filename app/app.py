@@ -50,7 +50,7 @@ def results(ingredient1=None):
         combine = ing1_drinks & ing2_drinks & ing3_drinks
 
     if combine:
-        return render_template("existing.html", ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
+        return render_template("existing.html", combine=combine, ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
     else:
         return render_template("new.html", ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, ing1_drinks=ing1_drinks, ing2_drinks=ing2_drinks, ing3_drinks=ing3_drinks)
 
