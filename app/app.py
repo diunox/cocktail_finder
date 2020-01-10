@@ -35,7 +35,7 @@ def results(ingredient1=None):
     if not ingredient1 or not ingredient2 or not ingredient3:
         return render_template("badinput.html")
 
-    cnx = mysql.connector.connect(host='db-ablack-demo-do-user-6644004-0.db.ondigitalocean.com', port=25060, user='doadmin', db='defaultdb', passwd='hym61r4n0jypa93w', ssl_ca='ca-certificate.crt')
+    cnx = mysql.connector.connect(host='kickoff-demo-db-do-user-2633050-0.db.ondigitalocean.com', port=25060, user='doadmin', db='defaultdb', passwd='gvup6p66l8rh1cys', ssl_ca='ca-certificate.crt')
     cursor = cnx.cursor()
     cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1" % ingredient1)
     cursor.execute("insert into ingredients (ingredient, ing_count) values ('%s', 1) on duplicate key update ing_count = ing_count + 1" % ingredient2)
